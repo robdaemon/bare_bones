@@ -72,3 +72,12 @@ pragma Restrictions (Max_Asynchronous_Select_Nesting => 0);
 --  I'm not sure about this one, needs to be tested fully with data with
 --  initialisers to be certain.
 pragma Restrictions (No_Default_Initialization);
+
+-- Extras suggested by the compiler
+pragma Restrictions (No_Access_Parameter_Allocators);
+pragma Restrictions (No_Access_Subprograms);
+pragma Restrictions (No_Coextensions);
+pragma Restrictions (No_Exception_Handlers);
+pragma Restrictions (No_Implementation_Aspect_Specifications);
+pragma Restrictions (No_Implementation_Units);
+pragma Restrictions (No_Implicit_Aliasing);

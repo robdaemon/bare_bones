@@ -10,20 +10,20 @@ package body Console is
      (Char       : Character;
       X          : Screen_Width_Range;
       Y          : Screen_Height_Range;
-      Foreground : Foreground_Colour := White;
-      Background : Background_Colour := Black) is
+      Foreground : Foreground_Color := White;
+      Background : Background_Color := Black) is
    begin
       Video_Memory (Y)(X).Char              := Char;
-      Video_Memory (Y)(X).Colour.Foreground := Foreground;
-      Video_Memory (Y)(X).Colour.Background := Background;
+      Video_Memory (Y)(X).Color.Foreground := Foreground;
+      Video_Memory (Y)(X).Color.Background := Background;
    end Put;
 
    procedure Put
       (Str        : String;
        X          : Screen_Width_Range;
        Y          : Screen_Height_Range;
-       Foreground : Foreground_Colour := White;
-       Background : Background_Colour := Black) is
+       Foreground : Foreground_Color := White;
+       Background : Background_Color := Black) is
    begin
       for Index in Str'First .. Str'Last loop
          Put (Str (Index),
@@ -38,8 +38,8 @@ package body Console is
    --    (Data       : in Natural;
    --     X          : in Screen_Width_Range;
    --     Y          : in Screen_Height_Range;
-   --     Foreground : in Foreground_Colour := White;
-   --     Background : in Background_Colour := Black) is
+   --     Foreground : in Foreground_Color := White;
+   --     Background : in Background_Color := Black) is
 
    --     type Numbers_Type is array (0 .. 9) of Character;
 
@@ -55,16 +55,16 @@ package body Console is
    --         Length     : in Natural;
    --         X          : in Screen_Width_Range;
    --         Y          : in Screen_Height_Range;
-   --         Foreground : in Foreground_Colour := White;
-   --         Background : in Background_Colour := Black);
+   --         Foreground : in Foreground_Color := White;
+   --         Background : in Background_Color := Black);
 
    --     procedure PutStringBackwards
    --        (Str        : in String;
    --         Length     : in Natural;
    --         X          : in Screen_Width_Range;
    --         Y          : in Screen_Height_Range;
-   --         Foreground : in Foreground_Colour := White;
-   --         Background : in Background_Colour := Black) is
+   --         Foreground : in Foreground_Color := White;
+   --         Background : in Background_Color := Black) is
    --     begin
    --        for Index in reverse Integer (Str'First) .. Integer (Length) loop
    --           Put (Str (Index),
@@ -86,7 +86,7 @@ package body Console is
    --     PutStringBackwards (Str, Length, X, Y, Foreground, Background);
    --  end Put;
 
-   procedure Clear (Background : Background_Colour := Black) is
+   procedure Clear (Background : Background_Color := Black) is
    begin
       for X in Screen_Width_Range'First .. Screen_Width_Range'Last loop
          for Y in Screen_Height_Range'First .. Screen_Height_Range'Last loop

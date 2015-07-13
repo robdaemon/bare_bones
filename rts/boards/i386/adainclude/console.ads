@@ -11,7 +11,7 @@ package Console is
    pragma Preelaborate (Console);
 
    TE : exception;
-   type Background_Colour is
+   type Background_Color is
      (Black,
       Blue,
       Green,
@@ -19,9 +19,9 @@ package Console is
       Red,
       Magenta,
       Brown,
-      Light_Grey);
+      Light_Gray);
 
-   for Background_Colour use
+   for Background_Color use
      (Black      => 16#0#,
       Blue       => 16#1#,
       Green      => 16#2#,
@@ -29,11 +29,11 @@ package Console is
       Red        => 16#4#,
       Magenta    => 16#5#,
       Brown      => 16#6#,
-      Light_Grey => 16#7#);
+      Light_Gray => 16#7#);
 
-   for Background_Colour'Size use 4;
+   for Background_Color'Size use 4;
 
-   type Foreground_Colour is
+   type Foreground_Color is
      (Black,
       Blue,
       Green,
@@ -41,8 +41,8 @@ package Console is
       Red,
       Magenta,
       Brown,
-      Light_Grey,
-      Dark_Grey,
+      Light_Gray,
+      Dark_Gray,
       Light_Blue,
       Light_Green,
       Light_Cyan,
@@ -51,7 +51,7 @@ package Console is
       Yellow,
       White);
 
-   for Foreground_Colour use
+   for Foreground_Color use
      (Black         => 16#0#,
       Blue          => 16#1#,
       Green         => 16#2#,
@@ -59,8 +59,8 @@ package Console is
       Red           => 16#4#,
       Magenta       => 16#5#,
       Brown         => 16#6#,
-      Light_Grey    => 16#7#,
-      Dark_Grey     => 16#8#,
+      Light_Gray    => 16#7#,
+      Dark_Gray     => 16#8#,
       Light_Blue    => 16#9#,
       Light_Green   => 16#A#,
       Light_Cyan    => 16#B#,
@@ -69,26 +69,26 @@ package Console is
       Yellow        => 16#E#,
       White         => 16#F#);
 
-   for Foreground_Colour'Size use 4;
+   for Foreground_Color'Size use 4;
 
-   type Cell_Colour is
+   type Cell_Color is
       record
-         Foreground : Foreground_Colour;
-         Background : Background_Colour;
+         Foreground : Foreground_Color;
+         Background : Background_Color;
       end record;
 
-   for Cell_Colour use
+   for Cell_Color use
       record
          Foreground at 0 range 0 .. 3;
          Background at 0 range 4 .. 7;
       end record;
 
-   for Cell_Colour'Size use 8;
+   for Cell_Color'Size use 8;
 
    type Cell is
       record
-         Char   : Character;
-         Colour : Cell_Colour;
+         Char  : Character;
+         Color : Cell_Color;
       end record;
 
    for Cell'Size use 16;
@@ -102,32 +102,32 @@ package Console is
    type Row    is array (Screen_Width_Range)  of Cell;
    type Screen is array (Screen_Height_Range) of Row;
 
-   Video_Memory : Screen;
-
-   for Video_Memory'Address use System'To_Address (16#000B_8000#);
-
-   pragma Import (Ada, Video_Memory);
-
    procedure Put
      (Char       : Character;
       X          : Screen_Width_Range;
       Y          : Screen_Height_Range;
-      Foreground : Foreground_Colour := White;
-      Background : Background_Colour := Black);
+      Foreground : Foreground_Color := White;
+      Background : Background_Color := Black);
 
    procedure Put
      (Str        : String;
       X          : Screen_Width_Range;
       Y          : Screen_Height_Range;
-      Foreground : Foreground_Colour := White;
-      Background : Background_Colour := Black);
+      Foreground : Foreground_Color := White;
+      Background : Background_Color := Black);
 
    --  procedure Put
    --    (Data       : in Natural;
    --     X          : in Screen_Width_Range;
    --     Y          : in Screen_Height_Range;
-   --     Foreground : in Foreground_Colour := White;
-   --     Background : in Background_Colour := Black);
+   --     Foreground : in Foreground_Color := White;
+   --     Background : in Background_Color := Black);
 
-   procedure Clear (Background : Background_Colour := Black);
+   procedure Clear (Background : Background_Color := Black);
+
+   Video_Memory : Screen;
+
+   for Video_Memory'Address use System'To_Address (16#000B_8000#);
+
+   pragma Import (Ada, Video_Memory);
 end Console;

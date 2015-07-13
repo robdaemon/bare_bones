@@ -13,8 +13,8 @@ package body Multiboot is
    begin
       if Info.Flags.Symbol_Table and not Info.Flags.Section_Header_Table then
          return Aout;
-      elsif not Info.Flags.Symbol_Table and
-        Info.Flags.Section_Header_Table then
+      elsif not Info.Flags.Symbol_Table and Info.Flags.Section_Header_Table
+      then
          return ELF;
       else
          raise Program_Error;

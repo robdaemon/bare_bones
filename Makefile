@@ -39,8 +39,8 @@ AS_OBJS		=	obj/startup.o
 ADA_OBJS	=	obj/multiboot.o
 
 IMAGE		=	boot.iso
-QEMU		=	qemu
-QEMU_FLAGS	=	-s -cdrom $(IMAGE)
+QEMU		=	qemu-system-x86_64
+QEMU_FLAGS	=	-s -kernel $(TARGET)
 QEMUD_FLAGS	=	-S $(QEMU_FLAGS)
 
 OUTDIR		=	out/disk/boot/

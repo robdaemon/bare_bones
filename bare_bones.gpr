@@ -42,8 +42,8 @@ project Bare_Bones is
 
    package Builder is
       Basic_Switches :=
-        ("-gnat05", "-x", "-a", "-gnatg", "-gnatec=../gnat.adc", "-gnaty-I",
-         "-gnaty+d");
+        ("-gnat2005", "-x", "-a", "-gnatg", "-gnatec=../gnat.adc", "-gnaty-I",
+         "-gnaty+d", "-gnatws");
       --, "-fstack-check");
 
       Builder_Build_Switches := ("");

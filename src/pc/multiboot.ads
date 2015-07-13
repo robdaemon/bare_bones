@@ -266,9 +266,6 @@ package Multiboot is
 
    Info : constant MB_Info;
 
-   --  So we can use the address stored at that location.
-   for Info'Address use System'To_Address (Info_Address);
-
    pragma Volatile (Info);
    pragma Import (C, Info);
 
@@ -278,4 +275,7 @@ package Multiboot is
    Magic : constant Magic_Values;
 
    pragma Import (Assembly, Magic, "magic");
+
+   --  So we can use the address stored at that location.
+   for Info'Address use System'To_Address (Info_Address);
 end Multiboot;
