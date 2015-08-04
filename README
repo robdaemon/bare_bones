@@ -4,8 +4,7 @@
 Updates
 --------------------------------------------------------------------------------
 
-Modified to compile under gnat 4.9.2. This required disabling all warnings
-temporarily, as there's a warning about alignment that needs to be resolved.
+Modified to compile under gnat 5.2.0.
 
 When building on my machine, Ubuntu 15.04 amd64, making the ISO image with
 grub-mkrescue fails, because the installed version of grub forces EFI. Instead,

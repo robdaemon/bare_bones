@@ -84,7 +84,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS) src/bare_bones.adb
 	$(TOOL_PREFIX)$(GNATMAKE) --RTS=$(RTS_DIR) \
 		-XBoard=$(BOARD) -XBuild=$(BUILD) -XBug=$(BUG) \
-		-Pbare_bones.gpr
+		-Pbare_bones.gpr -L$(RTS_DIR)/adalib
 
 obj/startup.o: src/$(BOARD)/startup.s
 	$(AS) $(AS_FLAGS) src/$(BOARD)/startup.s -o obj/startup.o
@@ -108,5 +108,5 @@ boot.iso: $(TARGET)
 .PHONY: clean
 
 clean:
-	-rm obj/* *~ $(TARGET)
+	-rm -f obj/* *~ $(TARGET)
 
