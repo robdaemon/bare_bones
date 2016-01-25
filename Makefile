@@ -39,7 +39,7 @@ AS_OBJS		=	obj/startup.o
 ADA_OBJS	=	obj/multiboot.o
 
 IMAGE		=	boot.iso
-QEMU		=	qemu-system-x86_64
+QEMU		=	qemu-system-i386
 QEMU_FLAGS	=	-s -kernel $(TARGET)
 QEMUD_FLAGS	=	-S $(QEMU_FLAGS)
 

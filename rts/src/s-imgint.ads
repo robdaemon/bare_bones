@@ -2,11 +2,11 @@
 --                                                                          --
 --                         GNAT RUN-TIME COMPONENTS                         --
 --                                                                          --
---                                 G N A T                                  --
+--                       S Y S T E M . I M G _ I N T                        --
 --                                                                          --
 --                                 S p e c                                  --
 --                                                                          --
---                     Copyright (C) 1992-2014, AdaCore                     --
+--          Copyright (C) 1992-2009, Free Software Foundation, Inc.         --
 --                                                                          --
 -- GNAT is free software;  you can  redistribute it  and/or modify it under --
 -- terms of the  GNU General Public License as published  by the Free Soft- --
@@ -29,9 +29,29 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  This is the parent package for a library of useful units provided with GNAT
+--  This package contains the routines for supporting the Image attribute for
+--  signed integer types up to Size Integer'Size, and also for conversion
+--  operations required in Text_IO.Integer_IO for such types.
 
-package GNAT is
+package System.Img_Int is
    pragma Pure;
 
-end GNAT;
+   procedure Image_Integer
+     (V : Integer;
+      S : in out String;
+      P : out Natural);
+   --  Computes Integer'Image (V) and stores the result in S (1 .. P)
+   --  setting the resulting value of P. The caller guarantees that S
+   --  is long enough to hold the result, and that S'First is 1.
+
+   procedure Set_Image_Integer
+     (V : Integer;
+      S : in out String;
+      P : in out Natural);
+   --  Stores the image of V in S starting at S (P + 1), P is updated to point
+   --  to the last character stored. The value stored is identical to the value
+   --  of Integer'Image (V) except that no leading space is stored when V is
+   --  non-negative. The caller guarantees that S is long enough to hold the
+   --  result. S need not have a lower bound of 1.
+
+end System.Img_Int;
